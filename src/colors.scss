@@ -1,0 +1,57 @@
+@use "sass:color";
+
+@function shadow-color($clr) {
+    $red: color.channel($clr, "red", $space: rgb);
+    $green: color.channel($clr, "green", $space: rgb);
+    $blue: color.channel($clr, "blue", $space: rgb);
+
+    @return rgba($red * 0.25, $green * 0.25, $blue * 0.25, 1);
+}
+
+$accent-color: #2870f3;
+//$shadow-color: rgba(red($accent-color) * 0.25, green($accent-color) * 0.25, blue($accent-color) * 0.25, 1.0);
+$shadow-color: shadow-color($accent-color);
+
+$notification-border-color: #039ffa;
+
+$clickgui-base-color: black;
+$clickgui-text-color: white;
+$clickgui-text-dimmed-color: rgba(211, 211, 211, 255);
+$clickgui-grid-color: rgba(128, 128, 128, 0.25);
+
+$tabgui-base-color: black;
+$tabgui-text-color: white;
+$tabgui-text-shadow: shadow-color($tabgui-text-color);
+$tabgui-text-dimmed-color: rgba(211, 211, 211, 255);
+$tabgui-selected-color: #2770a0;
+
+$arraylist-base-color: black;
+$arraylist-text-color: white;
+$arraylist-tag-color: #aaaaaa;
+
+$targethud-base-color: black;
+$targethud-text-color: white;
+$targethud-text-dimmed-color: rgba(211, 211, 211, 255);
+
+$blockcounter-base-color: black;
+
+$hotbar-base-color: black;
+$hotbar-text-color: white;
+/* TODO: currently unused */
+$hotbar-experience-color: #88c657;
+$hotbar-health-color: #fc4130;
+$hotbar-hunger-color: #b88458;
+
+$menu-account-premium-color: #67d24a;
+$menu-base-color: black;
+$menu-text-color: white;
+$menu-text-dimmed-color: rgba(211, 211, 211, 255);
+$menu-error-color: #fc4130;
+$menu-button-loader-color: white;
+
+$scoreboard-base-color: black;
+
+$keystrokes-base-color: black;
+$keystrokes-text-color: white;
+
+$item-damage-base-color: black;
