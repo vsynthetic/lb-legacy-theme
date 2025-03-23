@@ -37,20 +37,12 @@
     .module {
         font-weight: 500;
         color: $tabgui-text-dimmed-color;
-        font-size: 12px;
+        font-size: 14px;
         padding: 6px 15px 6px 10px;
-        transition: ease color 0.2s;
-
-        .name {
-            transition: ease transform 0.2s;
-        }
+        background-color: rgba(0, 0, 0, 0.5);
 
         &.selected {
-            background-color: rgba($tabgui-base-color, 0.36);
-
-            .name {
-                transform: translateX(5px);
-            }
+            background-color: $tabgui-selected-color;
         }
 
         &.enabled {

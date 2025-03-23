@@ -15,55 +15,6 @@
 <style lang="scss">
     @use "../../../../colors.scss" as *;
 
-    /*.name {
-        font-weight: 500;
-        color: $tabgui-text-color;
-        font-size: 14px;
-        width: 100%;
-        padding: 7px 11px 7px 11px;
-
-        background: linear-gradient(
-            to left,
-            rgba(0, 0, 0, 0.5) 50%,
-            $tabgui-selected-color 50%
-        );
-        background-size: 200% 100%;
-        background-position: right bottom;
-        will-change: background-position;
-        overflow: hidden;
-    }
-
-    .category {
-        display: flex;
-
-        &.selected .name {
-            background-position: left bottom;
-        }
-
-        &.selected .arrow {
-            background-position: left bottom;
-        }
-    }
-
-    .arrow {
-        background: linear-gradient(
-            to left,
-            rgba(0, 0, 0, 0.5) 50%,
-            $tabgui-selected-color 50%
-        );
-        background-size: 200% 100%;
-        background-position: right bottom;
-        will-change: background-position;
-        overflow: hidden;
-
-        text-align: center;
-        color: $tabgui-text-color;
-        font-weight: 500;
-        font-size: 14px;
-        width: 40px;
-        padding: 7px 12px 7px 12px;
-    }*/
-
     .category {
         display: flex;
         justify-content: space-between; // This moves the arrow to the far right

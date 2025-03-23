@@ -101,7 +101,7 @@
     </div>
 
     {#if renderedModules.length > 0}
-        <div class="modules" transition:fly={{ x: -10, duration: 200 }} style="height: {categoriesElement.offsetHeight}px">
+        <div class="modules" style="height: {categoriesElement.offsetHeight}px">
             {#each renderedModules as { name, enabled }, index}
                 <Module {name} {enabled} selected={selectedModuleIndex === index} />
             {/each}
@@ -121,13 +121,13 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
+
         border-style: solid;
         border-width: 1px;
     }
 
     .modules {
       background-clip: content-box;
-      background-color: rgba($tabgui-base-color, 0.5);
       margin-left: 6px;
       min-width: 100px;
       display: flex;
@@ -137,5 +137,8 @@
       &::-webkit-scrollbar {
         width: 0;
       }
+
+      border-style: solid;
+      border-width: 1px;
     }
 </style>
