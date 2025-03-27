@@ -1,0 +1,64 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+
+      - run: npm install
+
+      - name: Install Whiskers
+        run: cargo install catppuccin-whiskers
+
+      - name: Generate colors
+        run: whiskers colors.tera
+
+      - name: Build the theme
+        run: |
+
+          echo "Building Legacy theme"
+          mkdir -p legacy
+          npm run build
+          mv dist/* legacy/
+          zip -r "Legacy.zip" legacy/*
+          rm -rf legacy
+
+      - name: Generate version tag
+        id: version_tag
+        run: |
+          TAG="prerelease-$(date +'%Y%m%d%H%M%S')"
+          echo "::set-output name=version::$TAG"
+
+      - name: Create a new Git tag
+        run: |
+          git fetch --tags
+
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+
+          TAG="prerelease-$COMMIT_HASH"
+          git tag $TAG
+          git push origin $TAG
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Legacy.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ steps.version_tag.outputs.version }}
+          prerelease: false
+          name: "Legacy theme for LiquidBounce (AutoBuild)"
